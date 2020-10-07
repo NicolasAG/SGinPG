@@ -2,7 +2,6 @@
 
 Code for the paper
 "[Measuring Systematic Generalization in Neural Proof Generation with Transformers](https://arxiv.org/abs/2009.14786)"
-
 ![Measuring Systematic Generalization in Neural Proof Generation with Transformers](img/screenshot.png)
 
 ### Installation
@@ -58,8 +57,10 @@ data/
 # FACTS
 #
 
-# --forward proof sentences
+# --no proof sentences
 python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_no_proof_facts_2+clutrr1_no_proof_facts_4+clutrr1_no_proof_facts_6 --experiment_name gpt_tiny_anon
+
+# --forward proof sentences
 python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_long_proof_facts_2+clutrr1_long_proof_facts_4+clutrr1_long_proof_facts_6 --experiment_name gpt_tiny_anon
 python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_short_proof_facts_2+clutrr1_short_proof_facts_4+clutrr1_short_proof_facts_6 --experiment_name gpt_tiny_anon
 
@@ -72,8 +73,10 @@ python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_short-proo
 # AMT
 #
 
-# --forward proof sentences
+# --no proof sentences
 python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_no_proof_amt_2+clutrr1_no_proof_amt_4+clutrr1_no_proof_amt_6 --experiment_name gpt_tiny_anon
+
+# --forward proof sentences
 python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_long_proof_amt_2+clutrr1_long_proof_amt_4+clutrr1_long_proof_amt_6 --experiment_name gpt_tiny_anon
 python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_short_proof_amt_2+clutrr1_short_proof_amt_4+clutrr1_short_proof_amt_6 --experiment_name gpt_tiny_anon
 
