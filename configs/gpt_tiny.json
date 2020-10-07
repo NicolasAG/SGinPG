@@ -1,0 +1,22 @@
+{
+	"batch_size": 512,
+	"n_grad_accumulation_steps": 1,
+	"fp16": "true",
+	"eval_freq": 192000,
+	"print_freq": 19200,
+	"emb_dim": 192,
+	"n_layers": 5,
+	"dropout": 0.1,
+	"transformer_ffn_emb_dim": 768,
+	"attention_heads": 3,
+	"relu_dropout": 0.1,
+	"attention_dropout": 0.1,
+	"max_length": 1024,
+	"n_epochs": 9999999,
+	"n_warmup_steps": 20000,
+	"reload": "true",
+	"activation": "gelu",
+	"adaptive_inputs": "false",
+	"adaptive_softmax": "false",
+	"cache": "true"
+}
