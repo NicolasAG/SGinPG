@@ -6,13 +6,16 @@ Code for the paper
 
 ### Installation
 
-````
-pip install torch
+Tested on this environment:
+- Python 3.6.8
+- CUDA Version: 10.2
+- 6 * 32Gb Tesla V100
 
-git clone https://github.com/NVIDIA/apex
-cd apex
-pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./ 
 ````
+pip install -r requirements.txt
+git clone https://github.com/NVIDIA/apex 
+````
+NOTE: `apex` must be cloned in the current directory or manually added to the `$PYTHONPATH`.
 
 ### Download data
 
@@ -52,6 +55,7 @@ data/
 
 ### Run experiments
 
+#### Training
 ````
 #
 # FACTS
@@ -83,6 +87,18 @@ python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_short_proo
 # --reversed proof sentences
 python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_long-proof-rev_amt_2+clutrr1_long-proof-rev_amt_4+clutrr1_long-proof-rev_amt_6 --experiment_name gpt_tiny_anon
 python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_short-proof-rev_amt_2+clutrr1_short-proof-rev_amt_4+clutrr1_short-proof-rev_amt_6 --experiment_name gpt_tiny_anon
+````
+
+#### Generation
+
+````
+
+````
+
+#### Evaluation
+
+````
+
 ````
 
 ### Acknowledgements

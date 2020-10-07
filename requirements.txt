@@ -1,2 +1,6 @@
-torch
-torchvision
+future==0.18.2
+numpy==1.19.2
+Pillow==7.2.0
+psutil==5.7.2
+torch==1.6.0
+torchvision==0.7.0

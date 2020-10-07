@@ -1,5 +1,6 @@
 """Main run script."""
 import os
+import sys
 import torch
 import torch.nn as nn
 import argparse
@@ -8,6 +9,12 @@ import pickle
 import time
 import json
 import copy
+
+try:
+    from apex.fp16_utils import FP16_Optimizer
+except ModuleNotFoundError:
+    print(f"WARNING: apex module not found. Looking in {os.path.dirname(os.getcwd())}...")
+    sys.path.append(f'{os.path.dirname(os.getcwd())}/apex')
 from apex.fp16_utils import FP16_Optimizer
 
 from data import MultiBPTTIterator, MultiBPTTAutoIterator
