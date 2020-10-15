@@ -268,8 +268,8 @@ run_config = json.load(open(params.config, 'r'))
 for k, v in run_config.items():
     python_run_script += f' --{k} {str(v)}'
 
-# name = params.experiment_name + '_' + params.dataset
-# python_run_script += f" > ../logs/log_{name}.log 2>&1"
+name = params.experiment_name + '_' + params.dataset
+python_run_script += f" > ../logs/log_{name}.log 2>&1"
 
 if params.test:
     print("\npython script: '%s'" % python_run_script)

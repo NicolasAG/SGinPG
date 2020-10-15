@@ -9,7 +9,6 @@ Code for the paper
 Tested on this environment:
 - Python 3.6.8
 - CUDA Version: 10.2
-- 6 * 32Gb Tesla V100
 
 ````
 pip install -r requirements.txt
@@ -26,7 +25,9 @@ and unzip into the `./data/` folder
 or
 
 ````
-cd ./data && ./setup.sh
+cd ./data
+chmod +x setup.sh
+./setup.sh
 ````
 
 ##### The file structure of the data is the following:
@@ -34,12 +35,18 @@ cd ./data && ./setup.sh
 data/
 |  backward/  # proof sentences are reversed, from answer to facts (~backward chaining)
 |  |  test/
+|  |  |  {2|3|4|5|6|7|8|9|10}/
+|  |  |  |  {long|short}_proof_1.{2|3|4|5|6|7|8|9|10}_test_facts_ANON.txt  # target used to evaluate
+|  |  |  |  queries_1.{2|3|4|5|6|7|8|9|10}_test_{amt|facts}_ANON.txt       # prefix used to generate
 |  |  train/
 |  |  |  {long|short}_proof_1.{2|4|6}_train_{amt|facts}_anon.txt.4000
 |  |  valid/
 |  |  |  {long|short}_proof_1.{2|4|6}_valid_{amt|facts}_anon.txt.4000
 |  forward/  # proof sentences are in order, from facts to answer (~forward chaining)
 |  |  test/
+|  |  |  {2|3|4|5|6|7|8|9|10}/
+|  |  |  |  {long|short|no}_proof_1.{2|3|4|5|6|7|8|9|10}_test_facts_ANON.txt  # target used to evaluate
+|  |  |  |  queries_1.{2|3|4|5|6|7|8|9|10}_test_{amt|facts}_ANON.txt          # prefix used to generate
 |  |  train/
 |  |  |  {long|no|short}_proof_1.{2|4|6}_train_{amt|facts}_anon.txt.4000
 |  |  valid/
@@ -56,6 +63,10 @@ data/
 ### Run experiments
 
 #### Training
+Tested with this hardware requirements:
+- gpu: 6 * 32 Gb Tesla V100
+- cpu: 6 * 16 Gb
+
 ````
 #
 # FACTS
@@ -91,8 +102,53 @@ python launch_job.py --config configs/gpt_tiny.json --dataset clutrr1_short-proo
 
 #### Generation
 
+Tested with this hardware requirements:
+- gpu: 1 * 12 Gb
+- cpu: 2 * 4 Gb
 ````
+chmod +x generate_proofs-answers.sh
+chmod +x generate_answers.sh
 
+#
+# FACTS
+#
+
+# --no proof sentences
+./generate_proofs-answers.sh np facts  # given facts story + query generate 'none' + answer
+./generate_answers.sh np facts         # given facts story + query + 'none' generate answer
+
+# --forward proof sentences
+./generate_proofs-answers.sh lp facts  # given facts story + query generate long-proof + answer
+./generate_proofs-answers.sh sp facts  # given facst story + query generate short-proof + answer
+./generate_answers.sh lp facts  # given facst story + query + long-proof generate answer
+./generate_answers.sh sp facts  # given facts story + query + short-proof generate answer
+
+# --reversed proof sentences
+./generate_proofs-answers.sh lpr facts  # given facts story + query generate long-proof-rev + answer
+./generate_proofs-answers.sh spr facts  # given facts story + query generate short-proof-rev + answer
+./generate_answers.sh lpr facts  # given facts story + query + long-proof-rev generate answer
+./generate_answers.sh spr facts  # given facts story + query + short-proof-rev generate answer
+
+
+#
+# AMT
+#
+
+# --no proof sentences
+./generate_proofs-answers.sh np amt  # given amt story + query generate 'none' + answer
+./generate_answers.sh np amt         # given amt story + query + 'none' generate answer
+
+# --forward proof sentences
+./generate_proofs-answers.sh lp amt  # given amt story + query generate long-proof + answer
+./generate_proofs-answers.sh sp amt  # given amt story + query generate short-proof + answer
+./generate_answers.sh lp amt  # given amt story + query + long-proof generate answer
+./generate_answers.sh sp amt  # given amt story + query + short-proof generate answer
+
+# --reversed proof sentences
+./generate_proofs-answers.sh lpr amt  # given amt story + query generate long-proof-rev + answer
+./generate_proofs-answers.sh spr amt  # given amt story + query generate short-proof-rev + answer
+./generate_answers.sh lpr amt  # given amt story + query + long-proof-rev generate answer
+./generate_answers.sh spr amt  # given amt story + query + short-proof-rev generate answer
 ````
 
 #### Evaluation

@@ -6,7 +6,6 @@ import subprocess
 import pickle
 import sys
 import collections
-import psutil
 import math
 import numpy as np
 import torch
