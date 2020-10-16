@@ -2,7 +2,7 @@
 
 # Download all data files
 
-if [[ ! -d "./backward" ]] || [[ ! -d "./forward" ]]
+if [[ ! -d "./backward" ]] || [[ ! -d "./forward" ]] || [[ ! -f "./relations_store.yaml" ]] || [[ ! -f "./rules_store.yaml" ]]
 then
     echo "downloading clutrr data files..."
     export fileid=1TUXEcyR5i3TCrYtlTIX65swQH56TSiJj
