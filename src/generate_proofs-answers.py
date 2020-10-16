@@ -12,7 +12,8 @@ import collections
 import fastBPE
 import numpy as np
 from sacremoses import MosesTokenizer, MosesDetokenizer
-from src.model import TransformerLM
+
+from model import TransformerLM
 
 
 def get_args():
