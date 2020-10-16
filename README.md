@@ -193,7 +193,7 @@ python evaluate_generation.py --truth <PATH_TO_GROUND_TRUTH_FILE> \
                               --proof_type <"normal" -or- "reversed">
 ````
 
-**NOTE 1**:
+**NOTE**:
 The evaluation script will save the answer accuracy and proof validity into a .yaml file at the same location as your `--pred` file.
 For instance, if you passed `--pred ../data/test.txt`, the script will create the following file: `../data/test.yaml` with the following structure:
 ````yaml
