@@ -84,3 +84,43 @@ def initialize_exp(args, logger_filename='train.log'):
     logger.info('Running command: %s' % args.command)
     return logger
 
+
+def undo_bpe(bpe, lines, tokens):
+    """
+    Undo BPE tokenization for some tokens
+    :param bpe: bpe object
+    :param lines: list of strings to format
+    :param tokens: list of tokens to keep in their original form
+    :return: formated lines
+    """
+    print(f"some tokens originally: {tokens[-10:]}")
+    tokens_bpe = bpe.apply(tokens)
+    assert len(tokens) == len(tokens_bpe)
+    print(f"same tokens after BPE : {tokens_bpe[-10:]}")
+
+    def _custom_f(line):
+        for i, tk_bpe in enumerate(tokens_bpe):
+            # case #1: two splited first name consecutivelly
+            if ' ' + tk_bpe + ' ' + tk_bpe + ' ' in line:
+                line = line.replace(f' {tk_bpe} {tk_bpe} ', f' {tokens[i]} . {tokens[i]} ')
+            # case #2: only one splited first name
+            if ' ' + tk_bpe + ' ' in line:
+                # case #2.1: splited first name with a '.' appended to it
+                if tokens[i].endswith('.'):
+                    line = line.replace(f' {tk_bpe} ', f' {tokens[i].replace(".", " .")} ')
+                # case #2.2: regular case
+                else:
+                    line = line.replace(f' {tk_bpe} ', f' {tokens[i]} ')
+        # make sure there are no null characters in the lines! :o
+        line = line.replace('\x00', '')
+        # debug: replace "Since" by "since" to be consistent
+        line = line.replace(' Since ', ' since ')
+        return line
+
+    print(f"some original lines:")
+    for l in lines[-5:]: print(f"  {l}")
+    print("replacing BPE first names...")
+    lines = list(map(_custom_f, lines))
+    print(f"same new lines:")
+    for l in lines[-5:]: print(f"  {l}")
+    return lines
