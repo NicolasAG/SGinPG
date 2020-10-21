@@ -1,4 +1,4 @@
-# Systematic Generalization in Proof Generation
+# Measuring Systematic Generalization in Neural Proof Generation with Transformers
 
 This repository shows how to reproduce results from the paper
 "[Measuring Systematic Generalization in Neural Proof Generation with Transformers](https://arxiv.org/abs/2009.14786)"
