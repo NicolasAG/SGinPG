@@ -4,7 +4,7 @@ This repository shows how to reproduce results from the paper
 "[Measuring Systematic Generalization in Neural Proof Generation with Transformers](https://arxiv.org/abs/2009.14786)"
 ![Measuring Systematic Generalization in Neural Proof Generation with Transformers](img/screenshot.png)
 
-### Installation
+## Installation
 
 Tested on this environment:
 - Python 3.6.8
@@ -16,7 +16,7 @@ git clone https://github.com/NVIDIA/apex
 ````
 NOTE: `apex` must be cloned in the current directory or manually added to the `$PYTHONPATH`.
 
-### Download data
+## Download data
 
 Download manually from this link:
 https://drive.google.com/file/d/1TUXEcyR5i3TCrYtlTIX65swQH56TSiJj/view?usp=sharing
@@ -63,9 +63,9 @@ data/
 #          family graph expressed with the 'facts' or 'amt' template
 ````
 
-### Run experiments
+## Run experiments
 
-#### (1) Training
+### (1) Training
 Tested with this hardware:
 - gpu: 6 * 32 Gb Tesla V100
 - cpu: 6 * 16 Gb
@@ -120,7 +120,7 @@ models/
 |  |  |  train.log
 ````
 
-#### (2) Generation
+### (2) Generation
 
 Tested with this hardware:
 - gpu: 1 * 12 Gb
@@ -182,7 +182,7 @@ Run one of the following command to generate predictions on all test levels from
 ./generate_answers.sh spr amt  # given amt story + query + short-proof-rev generate answer
 ````
 
-#### (3) Evaluation
+### (3) Evaluation
 Tested with this hardware requirements:
 - cpu: 1 * 4 Gb
 
@@ -263,11 +263,11 @@ And run one of the following command to evaluate your predictions:
 ./evaluate_generation.sh spr amt
 ````
 
-### Acknowledgements
+## Acknowledgements
 
 We greatly thank Sandeep Subramanian (https://github.com/MaximumEntropy) for allowing us to use and share some of his experimental code, from which this repository was constructed.
 
-### Cite
+## Citation
 
 To cite our paper, please use the following bibtex:
 ````
@@ -280,3 +280,7 @@ To cite our paper, please use the following bibtex:
   url = {https://arxiv.org/pdf/2009.14786.pdf}
 }
 ````
+
+## Contact
+
+If you have any questions, feel free to contact _Nicolas Gontier_ at gontiern@mila.quebec
