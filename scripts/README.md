@@ -1,4 +1,4 @@
-#### Additional scripts
+## Additional scripts
 
 **NOTE 1**: these files are not required to reproduce results.
 You can directly download the already processed txt files by following the instructions in the README at the root folder of this project.
